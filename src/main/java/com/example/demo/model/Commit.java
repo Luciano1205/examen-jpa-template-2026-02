@@ -1,11 +1,13 @@
 package com.example.demo.model;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
+@Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -14,7 +16,8 @@ import lombok.*;
 public class Commit {
 
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Column(name = "commit_hash", nullable = false, unique = true)
     private String commitHash;
@@ -22,7 +25,16 @@ public class Commit {
     @Column(nullable = false)
     private String message;
 
-    @JsonIgnore
+    private Integer lines_added;
+
+    private Integer lines_deleted;
+
+    private LocalDate commit_date;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private User author;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "repository_id", nullable = false)
     private Repository repository;
