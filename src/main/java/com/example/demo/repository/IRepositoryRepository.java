@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface IRepositoryRepository extends JpaRepository<Repository, Long> {
 
-    List<Repository> findBy
+    List<Repository> findByParentRepoIsNotNullAndOwner_EmailEquals
 
 }
