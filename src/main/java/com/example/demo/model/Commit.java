@@ -25,14 +25,14 @@ public class Commit {
     @Column(nullable = false)
     private String message;
 
-    private Integer lines_added;
+    private Integer linesAdded;
 
     private Integer lines_deleted;
 
     private LocalDate commit_date;
 
     @ManyToOne
-    @JoinColumn(name = "author_id")
+    @JoinColumn(name = "author_id ", nullable = false)
     private User author;
 
     @ManyToOne(fetch = FetchType.LAZY)

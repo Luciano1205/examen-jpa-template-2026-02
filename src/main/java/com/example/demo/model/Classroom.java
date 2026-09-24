@@ -30,4 +30,8 @@ public class Classroom {
     @JoinColumn (name = "teacher_id")
     private User teacher;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "classroom")
+    private List<Assignment> assignments;
+
 }

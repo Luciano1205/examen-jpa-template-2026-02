@@ -31,10 +31,10 @@ public class PullRequest {
     @Column(name = "created_at", nullable = false)
     private Timestamp createdAt;
 
-    @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY)
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "repository_id", nullable = false)
-    private List<Repository> repository;
+    private Repository repository;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "reviewer_id")

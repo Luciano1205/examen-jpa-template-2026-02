@@ -33,12 +33,12 @@ public class Assignment {
     private Integer maxScore;
 
     @ManyToOne
-    @JoinColumn(name = classroom_id)
+    @JoinColumn(name = "classroom_id")
     private Classroom classroom;
 
     @JsonIgnore
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "assignment", cascade = CascadeType.ALL)
-    private Repository repositories;
+    private List<Repository> repositories;
 }
